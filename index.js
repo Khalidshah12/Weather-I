@@ -13,8 +13,7 @@ fetch(url).then(function (res) {
     console.log(err)
 })
 
-
-
+// search function 
 function search() {
     const searchInput = document.querySelector('#searchInput');
 
