@@ -151,7 +151,7 @@ function display(data) {
 
     const sunrise = document.createElement('p');
     sunrise.setAttribute("class", "smallDetails")
-    sunrise.innerText = "Sunrise: " + convertTime(data.sys.sunrise)
+    sunrise.innerText = "Sunrise: " + convertTime(data.sys.sunrise) + " am"
 
     sunriseDiv.append(sunriseIcon, sunrise)
 
@@ -166,7 +166,7 @@ function display(data) {
 
     const sunset = document.createElement('p');
     sunset.setAttribute("class", "smallDetails")
-    sunset.innerText = "Sunset: " + convertTime(data.sys.sunset)
+    sunset.innerText = "Sunset: " + convertTime(data.sys.sunset) + " pm"
 
     sunsetDiv.append(sunsetIcon, sunset)
 
