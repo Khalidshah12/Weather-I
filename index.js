@@ -1,17 +1,3 @@
-const searchInput = document.querySelector('#searchInput');
-
-let key = "ed1f0c8cff78acec3459f425c7493728"
-
-let url = `https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=${key}`
-
-fetch(url).then(function (res) {
-    return res.json()
-}).then(function (res) {
-    console.log(res)
-    // display(res)
-}).catch(function (err) {
-    console.log(err)
-})
 
 // search function 
 function search() {
@@ -20,7 +6,7 @@ function search() {
     let key = "ed1f0c8cff78acec3459f425c7493728"
 
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${key}`
-    // let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`
+
     fetch(url).then(function (res) {
         return res.json()
     }).then(function (res) {
