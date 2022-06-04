@@ -1,27 +1,33 @@
 
 // search function 
 function search() {
-    const searchInput = document.querySelector('#searchInput');
-
+    const searchInput = document.querySelector('#searchInput').value;
     let key = "ed1f0c8cff78acec3459f425c7493728"
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${key}`
 
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${key}`
-
-    fetch(url).then(function (res) {
-        return res.json()
-    }).then(function (res) {
-        console.log(res)
-        display(res)
-    }).catch(function (err) {
-        console.log(err)
-    })
+    if (searchInput != "") {
+        fetch(url).then(function (res) {
+            return res.json()
+        }).then(function (res) {
+            console.log(res)
+            display(res)
+        }).catch(function (err) {
+            console.log(err)
+        })
+    }
+    else {
+        alert("Please Enter City Name")
+    }
 }
 
-
+// appending data function 
 function display(data) {
 
     const weather = document.querySelector('#weather');
     const allDetails = document.querySelector('#allDetails');
+
+    const sw = document.querySelector('#sw');
+    sw.style.display = "none"
 
     weather.innerHTML = ""
 
@@ -202,9 +208,10 @@ function display(data) {
 
     weather2.append(sunriseDiv, sunsetDiv, feels_likeDiv, visibilityDiv, windDiv)
     weather.append(tempDiv, city, temp_minDiv, temp_maxDiv, humidityDiv, cloudsDiv, pressureDiv)
+    document.querySelector('#searchInput').value = ''
 }
 
-
+// get latitude and longitude function
 function getLocationWeather() {
     navigator.geolocation.getCurrentPosition(success);
     function success(position) {
@@ -218,9 +225,7 @@ function getLocationWeather() {
     }
 }
 
-
-
-
+// time converter function 
 function convertTime(unixTime) {
     let dt = new Date(unixTime * 1000)
     let h = dt.getHours()
